@@ -11,6 +11,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+ENV PYTHONPATH=/app
+
 EXPOSE 8000
 
 CMD python apps/manage.py migrate && python apps/manage.py runserver 0.0.0.0:8000
