@@ -1,0 +1,338 @@
+{
+	"info": {
+		"name": "Spy Cat Agency API",
+		"description": "API collection for Spy Cat Agency management system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Spy Cats",
+			"item": [
+				{
+					"name": "List All Cats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/spy-cats/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "spy-cats", ""]
+						}
+					}
+				},
+				{
+					"name": "Create Cat",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Whiskers\",\n    \"years_of_experience\": 5,\n    \"breed\": \"Persian\",\n    \"salary\": 50000.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/spy-cats/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "spy-cats", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Single Cat",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/spy-cats/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "spy-cats", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Update Cat Salary",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"salary\": 55000.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/spy-cats/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "spy-cats", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Delete Cat",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/spy-cats/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "spy-cats", "1", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Missions",
+			"item": [
+				{
+					"name": "List All Missions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/missions/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "missions", ""]
+						}
+					}
+				},
+				{
+					"name": "Create Mission with Targets",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Operation Midnight\",\n    \"description\": \"Secret mission to gather intelligence\",\n    \"targets\": [\n        {\n            \"name\": \"Target Alpha\",\n            \"country\": \"USA\",\n            \"notes\": \"High priority target\",\n            \"is_completed\": false\n        },\n        {\n            \"name\": \"Target Beta\",\n            \"country\": \"UK\",\n            \"notes\": \"Secondary target\",\n            \"is_completed\": false\n        }\n    ],\n    \"is_completed\": false\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/missions/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "missions", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Single Mission",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/missions/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "missions", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Assign Cat to Mission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cat_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/missions/1/assign-cat/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "missions", "1", "assign-cat", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Target",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/missions/1/targets/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "missions", "1", "targets", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Update Target",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_completed\": true,\n    \"notes\": \"Target completed successfully\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/missions/1/targets/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "missions", "1", "targets", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Delete Mission",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/missions/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "missions", "1", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Notes",
+			"item": [
+				{
+					"name": "List All Notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/notes/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "notes", ""]
+						}
+					}
+				},
+				{
+					"name": "List Notes by Target",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/notes/?target_id=1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "notes", ""],
+							"query": [
+								{
+									"key": "target_id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Note",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"target\": 1,\n    \"content\": \"Gathered important intelligence on the target\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/notes/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "notes", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Single Note",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/notes/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "notes", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Update Note",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Updated note content with new information\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/notes/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "notes", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Partial Update Note",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Partially updated note content\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/notes/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "notes", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Delete Note",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/notes/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "notes", "1", ""]
+						}
+					}
+				}
+			]
+		}
+	]
+}
+
